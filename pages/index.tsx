@@ -1,8 +1,6 @@
 import React from 'react';
+import Recipes from "../components/recipe/recipes";
 
-const Index = () =>
-    <div>
-        <h1>Hi, new Next.js project</h1>
-    </div>;
+const Index = () => <Recipes />
 
 export default Index;
