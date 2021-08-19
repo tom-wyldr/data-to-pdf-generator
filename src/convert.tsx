@@ -5,7 +5,7 @@ const html = fs.readFileSync('D:\\IdeaProjects\\data-to-pdf-generator\\out\\inde
 const options = {
     "format":"A4" ,
     "orientation": "landscape",
-    "quality": "75",
+    "quality": "100",
     "border": {
         "top": "38px",
         "right": "38px",
@@ -15,7 +15,6 @@ const options = {
     "type":"pdf",
     "timeout":120000
 };
-
 convert();
 
 function convert() {

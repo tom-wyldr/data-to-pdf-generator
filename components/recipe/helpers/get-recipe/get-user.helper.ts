@@ -13,7 +13,7 @@ const getRecipeFromXLSX = (): Recipe[] => {
   const spreadsheet = excelToJson({
     sourceFile: 'D:\\IdeaProjects\\data-to-pdf-generator\\test.xlsx'
   });
-  const recipesList = spreadsheet.figma_recipes.filter(it => it.C !== '/hide').slice(1);
+  const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
   const res = recipesList.map(it => {
     return {
       "id": it.A,
@@ -34,15 +34,48 @@ const getRecipeFromXLSX = (): Recipe[] => {
       "instruction": it.N.split("\n\n"),
       "printId": it.R,
       "tip": it.T,
-      "unsatfat": it.AD,
-      "satfat": it.AE,
-      "energy": it.AF,
-      "salt": it.AH,
-      "sugar": it.AI,
-      "fibers": it.AJ,
-      "protein": it.AK,
-      "fat": it.AL,
-      "carbs": it.AM
+      "recipeFootNote": it.O,
+      "nutrientsLabel": it.AN,
+      "stepsLabel": it.Q,
+      "ingredientsLabel": it.P,
+      "nutrients": [
+        {
+          "name": it.Y,
+          "amount": it.AD
+        },
+        {
+          "name": it.X,
+          "amount": it.AE
+        },
+        {
+          "name": it.U,
+          "amount": it.AF
+        },
+        {
+          "name": it.AC,
+          "amount": it.AH
+        },
+        {
+          "name": it.AB,
+          "amount": it.AI
+        },
+        {
+          "name": it.AA,
+          "amount": it.AJ
+        },
+        {
+          "name": it.V,
+          "amount": it.AK
+        },
+        {
+          "name": it.W,
+          "amount": it.AL
+        },
+        {
+          "name": it.Z,
+          "amount": it.AM
+        }
+      ]
     }
   });
   return res;

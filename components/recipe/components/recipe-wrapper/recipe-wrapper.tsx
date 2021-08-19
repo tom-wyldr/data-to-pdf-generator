@@ -13,17 +13,6 @@ type Props = {
 };
 
 const RecipeWrapper: FC<Props> = ({recipe}) =>  {
-  const nutrients = new Map([
-    ["Energy", recipe.energy],
-    ["Protein", recipe.protein],
-    ["Fat", recipe.fat],
-    ["Saturated", recipe.satfat],
-    ["Polyunsaturated", recipe.unsatfat],
-    ["Carbs", recipe.carbs],
-    ["Fibers", recipe.fibers],
-    ["Sugar", recipe.sugar],
-    ["Salt", recipe.salt]
-  ]);
   return (
     <Container>
       <Item>
@@ -37,13 +26,13 @@ const RecipeWrapper: FC<Props> = ({recipe}) =>  {
         />
         <h3>{recipe.title} </h3>
         <Tip tip={recipe.tip} />
-        <NutrientsList nutrients={nutrients} />
-        <IngredientsList ingredients={recipe.ingredients} species={recipe.paos} />
+        <NutrientsList nutrients={recipe.nutrients} label={recipe.nutrientsLabel} />
+        <IngredientsList ingredients={recipe.ingredients} species={recipe.paos} label={recipe.ingredientsLabel} />
       </Item>
       <Item>
-        <Instruction steps={recipe.instruction} />
+        <Instruction steps={recipe.instruction} label={recipe.stepsLabel} />
       </Item>
-      <FooterLabel>*Ingredients we assumed you have at home and therefore not delivered by default</FooterLabel>
+      <FooterLabel>{recipe.recipeFootNote}</FooterLabel>
       <IdLabel>{recipe.printId}</IdLabel>
     </Container>
   );

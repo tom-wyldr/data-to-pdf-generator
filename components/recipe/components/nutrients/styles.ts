@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  height: 150px;
   column-count: 2;
   display: block;
   margin: 10px 0px 10px 0px;

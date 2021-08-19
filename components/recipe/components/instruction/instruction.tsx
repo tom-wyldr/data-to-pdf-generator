@@ -4,14 +4,15 @@ import { Label, Title } from "./styles";
 
 type Props = {
   steps: string[];
+  label: string;
 };
 
-const Instruction: FC<Props> = ({steps}) =>  {
+const Instruction: FC<Props> = ({steps, label}) =>  {
   const renderRecipes = steps.map(step => <Label>{step}</Label>);
 
   return (
     <div>
-      <Title>Steps</Title>
+      <Title>{label}</Title>
       <React.Fragment>
         { renderRecipes }
       </React.Fragment>

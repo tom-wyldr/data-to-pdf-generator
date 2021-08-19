@@ -4,11 +4,9 @@ type RecipeType = {
   icon: string;
 };
 
-type Ingredient = {
-  id: string;
+type Nutrient = {
   name: string;
   amount: string;
-  unit: string;
 };
 
 type Recipe = {
@@ -26,15 +24,11 @@ type Recipe = {
   instruction: string[];
   printId: string;
   tip: string;
-  unsatfat: string;
-  satfat: string;
-  energy: string;
-  salt: string;
-  sugar: string;
-  fibers: string;
-  protein: string;
-  fat: string;
-  carbs: string;
+  recipeFootNote: string;
+  nutrientsLabel: string;
+  stepsLabel: string;
+  ingredientsLabel: string;
+  nutrients: Nutrient[];
 };
 
-export type { Recipe, Ingredient, RecipeType };
+export type { Recipe, Nutrient, RecipeType };
