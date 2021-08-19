@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   border-radius: 10px;
   background-color: #01af9b;
-  min-height: 62px;
+  min-height: 70px;
   position: relative;
   margin: 10px 0px 10px 0px;
 `
@@ -36,6 +36,7 @@ export const Label = styled.p`
   font-size: 12px;
   margin-left: 5px;
   padding-right: 5px;
+  padding-bottom: 9px;
 `
 
 export const Icon = styled.img`

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-//todo: delete border
 export const Container = styled.div`
-  border: 1px solid;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
