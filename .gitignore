@@ -1,7 +1,6 @@
 # Project exclude paths
 /node_modules/
 /out/
-output.pdf
 database.json
 test.pdf
 test.xlsx

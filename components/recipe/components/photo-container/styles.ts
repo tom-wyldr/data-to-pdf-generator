@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: relative;
   width: 365px;
   height: 125px;
+  margin: 10px 0px 10px 0px;
 `
 
 export const Image = styled.img`
@@ -27,7 +28,7 @@ export const Info = styled.div`
   right: 0px;
   span {
     margin-right: 10px;
-    margin-left: 1px;
+    margin-left: 5px;
     font-size: 12px;
   }
 `

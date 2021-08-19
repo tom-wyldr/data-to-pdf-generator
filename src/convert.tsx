@@ -7,9 +7,10 @@ const options = {
     "orientation": "landscape",
     "quality": "75",
     "border": {
-        "top": "0.5in",
-        "right": "1in",
-        "left": "1in"
+        "top": "38px",
+        "right": "38px",
+        "left": "38px",
+        "bottom": "38px"
     },
     "type":"pdf",
     "timeout":120000

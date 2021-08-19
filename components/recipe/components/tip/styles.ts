@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 62px;
   width: 365px;
   position: relative;
+  margin: 10px 0px 10px 0px;
 `
 
 export const Card = styled.div`
@@ -28,6 +29,7 @@ export const Sign = styled.div`
   position: absolute;
   bottom: 0px;
   right: 0px;
+  transform: translateY(50%);
 `
 
 export const Label = styled.p`
@@ -35,4 +37,13 @@ export const Label = styled.p`
   font-size: 12px;
   margin-left: 5px;
   padding-right: 5px;
+`
+
+export const Icon = styled.img`
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    transform: translateX(40%) translateY(-60%);
 `

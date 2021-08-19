@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-use-before-define
 import React, {FC} from "react";
-import { Label } from "./styles";
+import { Label, Title } from "./styles";
 
 type Props = {
   steps: string[];
@@ -11,7 +11,7 @@ const Instruction: FC<Props> = ({steps}) =>  {
 
   return (
     <div>
-      <h4>Steps</h4>
+      <Title>Steps</Title>
       <React.Fragment>
         { renderRecipes }
       </React.Fragment>
