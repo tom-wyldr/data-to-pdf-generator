@@ -21,6 +21,17 @@ export const Item = styled.div`
   width: 50%;
 `
 
+export const LeftItem = styled.div`
+  float: left;
+  width: 40%;
+  padding-right: 30px;
+`
+
+export const RightItem = styled.div`
+  float: left;
+  width: 60%;
+`
+
 export const IdLabel = styled.p`
   position: absolute;
   color: slategray;

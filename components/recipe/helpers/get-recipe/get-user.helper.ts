@@ -40,14 +40,6 @@ const getRecipeFromXLSX = (): Recipe[] => {
       "ingredientsLabel": it.P,
       "nutrients": [
         {
-          "name": it.Y,
-          "amount": it.AD
-        },
-        {
-          "name": it.X,
-          "amount": it.AE
-        },
-        {
           "name": it.U,
           "amount": it.AF
         },
@@ -74,7 +66,15 @@ const getRecipeFromXLSX = (): Recipe[] => {
         {
           "name": it.Z,
           "amount": it.AM
-        }
+        },
+        {
+          "name": it.Y,
+          "amount": it.AD
+        },
+        {
+          "name": it.X,
+          "amount": it.AE
+        },
       ]
     }
   });

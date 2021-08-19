@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   border-radius: 10px;
   background-color: #01af9b;
-  height: 62px;
-  width: 365px;
+  min-height: 62px;
   position: relative;
   margin: 10px 0px 10px 0px;
 `
@@ -40,10 +39,10 @@ export const Label = styled.p`
 `
 
 export const Icon = styled.img`
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    transform: translateX(40%) translateY(-60%);
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  transform: translateX(40%) translateY(-60%);
 `

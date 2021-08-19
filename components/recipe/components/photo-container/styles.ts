@@ -2,14 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
-  width: 365px;
   height: 125px;
   margin: 10px 0px 10px 0px;
 `
 
 export const Image = styled.img`
   height: 125px;
-  width: 365px;
+  width: 100%;
   object-fit: cover;
   border-radius: 20px;
 `

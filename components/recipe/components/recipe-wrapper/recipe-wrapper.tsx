@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-use-before-define
 import React, {FC} from "react";
 import {Recipe} from "../../../../common/types/recipe/recipe.type";
-import { Container, IdLabel, FooterLabel, Item } from './styles'
+import { Container, IdLabel, FooterLabel, Item, LeftItem, RightItem } from './styles'
 import Tip from "../tip/tip";
 import NutrientsList from "../nutrients/nutrients-list";
 import IngredientsList from "../ingredients/ingredients-list";
@@ -15,7 +15,7 @@ type Props = {
 const RecipeWrapper: FC<Props> = ({recipe}) =>  {
   return (
     <Container>
-      <Item>
+      <LeftItem>
         <h4>Hi {recipe.firstName} </h4>
         <ImageContainer
             imgUrl={recipe.imgUrl}
@@ -28,10 +28,10 @@ const RecipeWrapper: FC<Props> = ({recipe}) =>  {
         <Tip tip={recipe.tip} />
         <NutrientsList nutrients={recipe.nutrients} label={recipe.nutrientsLabel} />
         <IngredientsList ingredients={recipe.ingredients} species={recipe.paos} label={recipe.ingredientsLabel} />
-      </Item>
-      <Item>
+      </LeftItem>
+      <RightItem>
         <Instruction steps={recipe.instruction} label={recipe.stepsLabel} />
-      </Item>
+      </RightItem>
       <FooterLabel>{recipe.recipeFootNote}</FooterLabel>
       <IdLabel>{recipe.printId}</IdLabel>
     </Container>

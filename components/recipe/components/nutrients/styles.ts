@@ -10,8 +10,7 @@ export const Container = styled.div`
 export const Item = styled.div`
   display: flex;
   font-size: 12px;
-  width: 120px;
-  height: 30px;
+  margin-bottom: 5px;
   vertical-align: top;
   
   &:after{
@@ -21,12 +20,12 @@ export const Item = styled.div`
 
 export const Name = styled.p`
   float: left;
-  width: 50%;
+  width: 65%;
 `
 
 export const Value = styled.p`
   float: left;
-  width: 50%;
+  width: 35%;
   font-weight: bold;
   text-align: right;
 `
