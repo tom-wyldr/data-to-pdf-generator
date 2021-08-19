@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+//todo: delete border
 export const Container = styled.div`
   border: 1px solid;
   padding-left: 20px;
@@ -7,7 +8,7 @@ export const Container = styled.div`
   padding-bottom: 20px;
   padding-top: 40px;
   position: relative;
-  height: 793px;
+  height: 792px;
   &:after{
     content: "";
     display: table;
