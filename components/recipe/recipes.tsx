@@ -6,10 +6,10 @@ import {getRecipe, getRecipeFromXLSX} from "./helpers/helpers";
 import {GlobalStyle} from "./styles";
 
 function Recipes() {
-  //const data = getRecipe();
-  const dataFromXlsx = getRecipeFromXLSX();
+  const data = getRecipe();
+  //const dataFromXlsx = getRecipeFromXLSX();
 
-  const renderRecipes = dataFromXlsx.map((recipe) => (
+  const renderRecipes = data.map((recipe) => (
     <RecipeWrapper recipe={recipe}/>
   ));
 

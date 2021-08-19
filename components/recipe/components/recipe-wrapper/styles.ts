@@ -7,7 +7,7 @@ export const Container = styled.div`
   padding-bottom: 20px;
   padding-top: 40px;
   position: relative;
-  height: 716px;
+  height: 793px;
   &:after{
     content: "";
     display: table;
