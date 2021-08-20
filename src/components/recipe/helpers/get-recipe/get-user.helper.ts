@@ -1,6 +1,6 @@
 'use strict';
 import {Recipe} from "../../../../common/types/types";
-import recipeDB from "../../../../database.json"
+import recipeDB from "../../../../../database.json"
 const excelToJson = require('convert-excel-to-json');
 
 const getRecipe = (

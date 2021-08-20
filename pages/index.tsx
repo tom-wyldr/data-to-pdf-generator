@@ -1,5 +1,5 @@
 import React from 'react';
-import Recipes from "../components/recipe/recipes";
+import Recipes from "../src/components/recipe/recipes";
 
 const Index = () => <Recipes />
 
