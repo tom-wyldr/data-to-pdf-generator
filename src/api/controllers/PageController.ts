@@ -1,14 +1,26 @@
-import {Controller, Body, Post, Get} from 'routing-controllers';
+import {Controller, Body, Post, Get, UploadedFile, BadRequestError, UseBefore, Req, Res} from 'routing-controllers';
+import fileUploadMiddleware from "../middlewares/fileUploadMiddleware";
+import { Request } from 'express';
+import PageService from "../services/PageService";
+import {promisify} from "util";
+
+//todo: move into special place
+const allowedFileTypes = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 
 @Controller()
 export class PageController {
-    @Post('/generate')
-    post(@Body() inputFile: any) {
-        return 'Saving user...';
+    private pageService: PageService;
+    constructor(){
+        this.pageService = new PageService();
     }
 
-    @Get('/test')
-    testReq() {
-        return 'it\'s working';
+    @Post('/generate')
+    @UseBefore(fileUploadMiddleware('input', allowedFileTypes, 1024 * 1024 * 4))
+    async post(@Req() req: Request, @Res() res: any) {
+        // fs.readFileAsync(file.path) in case of saving to disk
+        await this.pageService.generatePdfFromXlsx(req.file.buffer);
+        const file = `${process.cwd()}\\test2.pdf`;
+        await promisify<string, void>(res.sendFile.bind(res))(file)
+        return res;
     }
 }

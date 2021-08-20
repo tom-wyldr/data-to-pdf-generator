@@ -1,6 +1,8 @@
 'use strict';
-import {Recipe} from "../../../../common/types/types";
-import recipeDB from "../../../../../database.json"
+import {Recipe} from "../../common/types/types";
+import recipeDB from "../../../database.json"
+import {PageController} from "../../api/controllers/PageController";
+import PageService from "../../api/services/PageService";
 const excelToJson = require('convert-excel-to-json');
 
 const getRecipe = (
@@ -14,7 +16,16 @@ const getRecipeFromXLSX = (): Recipe[] => {
     sourceFile: 'D:\\IdeaProjects\\data-to-pdf-generator\\test.xlsx'
   });
   const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
-  const res = recipesList.map(it => {
+  return getRecipesList(recipesList);
+}
+
+const getRecipeFromApi = (): Recipe[] => {
+  console.log(PageService.data);
+  return getRecipesList(PageService.data);
+}
+
+const getRecipesList = (list):Recipe[] => {
+  return list.map(it => {
     return {
       "id": it.A,
       "firstName": it.C,
@@ -78,7 +89,6 @@ const getRecipeFromXLSX = (): Recipe[] => {
       ]
     }
   });
-  return res;
 }
 
-export { getRecipe, getRecipeFromXLSX };
+export { getRecipe, getRecipeFromXLSX, getRecipeFromApi };

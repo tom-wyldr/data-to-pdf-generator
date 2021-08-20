@@ -2,14 +2,14 @@
 // @ts-ignore
 import React from 'react';
 import {RecipeWrapper} from './components/components';
-import {getRecipe, getRecipeFromXLSX} from "./helpers/helpers";
 import {GlobalStyle} from "./styles";
+import {getRecipe, getRecipeFromXLSX,getRecipeFromApi} from "../../helpers/helpers";
 
 function Recipes() {
-  //const data = getRecipe();
-  const dataFromXlsx = getRecipeFromXLSX();
-
-  const renderRecipes = dataFromXlsx.map((recipe) => (
+  const data = getRecipe();
+  //const data = getRecipeFromXLSX();
+  //const data = getRecipeFromApi();
+  const renderRecipes = data.map((recipe) => (
     <RecipeWrapper recipe={recipe}/>
   ));
 
