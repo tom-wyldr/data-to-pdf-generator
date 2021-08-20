@@ -14,16 +14,15 @@ export default (inputName: string, allowedFileMimeTypes: string[], maxFileSize: 
 		limits: {
 			fileSize: maxFileSize,
 		},
-		storage: multer.memoryStorage()
-		/*
+		// storage: multer.memoryStorage()
 		storage: multer.diskStorage({
 			destination: (req, file, cb) => {
 				const uploadFolder = os.tmpdir();
 				(fse.ensureDir as any)(uploadFolder, null, (err: any) => cb(err, uploadFolder));
 			},
 			filename: (req, file, cb) => {
-				cb(null, `xlsxFile${Date.now()}.${mime.getExtension(file.mimetype)}`);
+				cb(null, `xlsxFigmaRecipeFile.xlsx`);
 			},
-		}),*/
+		}),
 	}).single(inputName);
 };

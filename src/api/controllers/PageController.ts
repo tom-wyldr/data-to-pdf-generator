@@ -3,6 +3,7 @@ import fileUploadMiddleware from "../middlewares/fileUploadMiddleware";
 import { Request } from 'express';
 import PageService from "../services/PageService";
 import {promisify} from "util";
+import os from "os";
 
 //todo: move into special place
 const allowedFileTypes = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];

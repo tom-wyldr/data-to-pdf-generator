@@ -3,6 +3,7 @@ import {Recipe} from "../../common/types/types";
 import recipeDB from "../../../database.json"
 import {PageController} from "../../api/controllers/PageController";
 import PageService from "../../api/services/PageService";
+import os from "os";
 const excelToJson = require('convert-excel-to-json');
 
 const getRecipe = (
@@ -20,8 +21,11 @@ const getRecipeFromXLSX = (): Recipe[] => {
 }
 
 const getRecipeFromApi = (): Recipe[] => {
-  console.log(PageService.data);
-  return getRecipesList(PageService.data);
+  const spreadsheet = excelToJson({
+    sourceFile: os.tmpdir()+'\\xlsxFigmaRecipeFile.xlsx'
+  });
+  const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
+  return getRecipesList(recipesList);
 }
 
 const getRecipesList = (list):Recipe[] => {
