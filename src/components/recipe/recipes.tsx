@@ -7,8 +7,8 @@ import {getRecipe, getRecipeFromXLSX,getRecipeFromApi} from "../../helpers/helpe
 
 function Recipes() {
   //const data = getRecipe();
-  //const data = getRecipeFromXLSX();
-  const data = getRecipeFromApi();
+  const data = getRecipeFromXLSX();
+  //const data = getRecipeFromApi();
   const renderRecipes = data.map((recipe) => (
     <RecipeWrapper recipe={recipe}/>
   ));

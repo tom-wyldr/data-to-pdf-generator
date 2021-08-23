@@ -1,9 +1,9 @@
 'use strict';
 import {Recipe} from "../../common/types/types";
 import recipeDB from "../../../database.json"
-import {PageController} from "../../api/controllers/PageController";
-import PageService from "../../api/services/PageService";
 import os from "os";
+var fs = require('fs');
+var path = require('path');
 const excelToJson = require('convert-excel-to-json');
 
 const getRecipe = (
@@ -21,9 +21,13 @@ const getRecipeFromXLSX = (): Recipe[] => {
 }
 
 const getRecipeFromApi = (): Recipe[] => {
+  const res = getMostRecent(os.tmpdir() + '\\recipeApp\\in\\');
   const spreadsheet = excelToJson({
-    sourceFile: os.tmpdir()+'\\xlsxFigmaRecipeFile.xlsx'
+    // @ts-ignore
+    sourceFile: os.tmpdir() + `\\recipeApp\\in\\${res.name}`
   });
+  // @ts-ignore
+  fs.unlinkSync(os.tmpdir() + `\\recipeApp\\in\\${res.name}`);
   const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
   return getRecipesList(recipesList);
 }
@@ -95,4 +99,25 @@ const getRecipesList = (list):Recipe[] => {
   });
 }
 
-export { getRecipe, getRecipeFromXLSX, getRecipeFromApi };
+const getMostRecent = (_dir): string => {
+  const dir = path.resolve(_dir);
+  let res = null;
+  const files = fs.readdirSync(dir);
+  if (files) {
+    res = {name: files[0], time: fs.statSync(path.resolve(dir, files[0])).mtime.getTime()};
+    for (let i = 1; i < files.length; ++i) {
+      const filepath = path.resolve(dir, files[i]);
+      const time = fs.statSync(filepath).mtime.getTime();
+      if (time < res.time) {
+        res = {name: files[i], time: time};
+      }
+    }
+  }
+  if (res !== null) {
+    return res;
+  } else {
+    return 'No files found';
+  }
+};
+
+export { getRecipe, getRecipeFromXLSX, getRecipeFromApi, getMostRecent };

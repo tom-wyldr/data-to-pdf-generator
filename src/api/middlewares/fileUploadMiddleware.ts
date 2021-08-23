@@ -17,11 +17,11 @@ export default (inputName: string, allowedFileMimeTypes: string[], maxFileSize: 
 		// storage: multer.memoryStorage()
 		storage: multer.diskStorage({
 			destination: (req, file, cb) => {
-				const uploadFolder = os.tmpdir();
+				const uploadFolder = os.tmpdir()+"\\recipeApp\\in\\";
 				(fse.ensureDir as any)(uploadFolder, null, (err: any) => cb(err, uploadFolder));
 			},
 			filename: (req, file, cb) => {
-				cb(null, `xlsxFigmaRecipeFile.xlsx`);
+				cb(null, `${Date.now()}xlsxFigmaRecipeFile.xlsx`);
 			},
 		}),
 	}).single(inputName);
