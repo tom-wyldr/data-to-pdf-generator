@@ -19,7 +19,16 @@ export class PageController {
     @UseBefore(fileUploadMiddleware('input', allowedFileTypes, 1024 * 1024 * 4))
     async post(@Req() req: Request, @Res() res: any) {
         // fs.readFileAsync(file.path) in case of saving to disk
-        await this.pageService.generatePdfFromXlsx(req.file.buffer);
+        // await this.pageService.generatePdfFromXlsx(req.file.buffer);
+        await this.pageService.generatePdfFromDiskXlsx();
+        const file = `${process.cwd()}\\test2.pdf`;
+        await promisify<string, void>(res.sendFile.bind(res))(file)
+        return res;
+    }
+
+    @Get('/recipes')
+    async recipes(@Res() res: any) {
+        await this.pageService.getRecipesFromDB();
         const file = `${process.cwd()}\\test2.pdf`;
         await promisify<string, void>(res.sendFile.bind(res))(file)
         return res;

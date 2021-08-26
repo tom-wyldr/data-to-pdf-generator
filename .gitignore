@@ -6,3 +6,4 @@ database.json
 *.xlsx
 .env
 queries
+DB.json

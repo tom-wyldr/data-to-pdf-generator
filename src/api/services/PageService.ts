@@ -24,10 +24,24 @@ export default class PageService {
     }
 
     async generatePdfFromXlsx(buffer: Buffer) {
+        await child_process.execSync('next build && next export && node src/convert.tsx');
+    }
+
+    async generatePdfFromDiskXlsx() {
+        await child_process.execSync('next build && next export && node src/convert.tsx');
+    }
+
+    async getRecipesFromDB() {
         await this.client.connect();
         let { rows } = await this.client.query(get_recipes.toString());
         rows = rows.filter(it => it.show !== '/hide');
-        console.log(rows);
+        rows = JSON.stringify(rows, null, 4);
+        await fs.writeFile('DB.json', rows, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("JSON data is saved.");
+        });
         await this.client.end();
         await child_process.execSync('next build && next export && node src/convert.tsx');
     }

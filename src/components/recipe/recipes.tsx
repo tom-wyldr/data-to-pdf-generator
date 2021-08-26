@@ -3,10 +3,11 @@
 import React from 'react';
 import {RecipeWrapper} from './components/components';
 import {GlobalStyle} from "./styles";
-import {getRecipe, getRecipeFromXLSX, getRecipeFromApi} from "../../helpers/helpers";
+import {getRecipe, getRecipeFromXLSX, getRecipeFromApi, getRecipeFromApiJSON} from "../../helpers/helpers";
 
 function Recipes() {
-  const data = getRecipe();
+    const data = getRecipeFromApiJSON();
+  //const data = getRecipe();
   //const data = getRecipeFromXLSX();
   //const data = getRecipeFromApi();
   const renderRecipes = data.map((recipe) => (
