@@ -4,16 +4,30 @@ import os from "os";
 const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
 
+const excelPath = os.tmpdir()+'/xlsxFigmaRecipeFile.xlsx';
+const jsonPath = os.tmpdir()+'/DB.json';
+
+const getRecipes = (): Recipe[] => {
+  if (fs.existsSync(excelPath)){
+    return getRecipeFromApi();
+  }else if (fs.existsSync(jsonPath)){
+    return getRecipeFromApiJSON();
+  }
+  return [];
+}
+
 const getRecipeFromApi = (): Recipe[] => {
   const spreadsheet = excelToJson({
-    sourceFile: os.tmpdir()+'/xlsxFigmaRecipeFile.xlsx'
+    sourceFile: excelPath
   });
+  fs.unlinkSync(excelPath);
   const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
   return getRecipesList(recipesList);
 }
 
 const getRecipeFromApiJSON = (): Recipe[] => {
-  const json = fs.readFileSync(os.tmpdir()+'/DB.json', 'utf-8');
+  const json = fs.readFileSync(jsonPath, 'utf-8');
+  fs.unlinkSync(jsonPath);
   return getRecipesListFromDB(JSON.parse(json));
 }
 
@@ -145,4 +159,4 @@ const getRecipesList = (list):Recipe[] => {
   });
 }
 
-export { getRecipeFromApi, getRecipeFromApiJSON };
+export { getRecipes };

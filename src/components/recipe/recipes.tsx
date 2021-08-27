@@ -3,11 +3,10 @@
 import React from 'react';
 import {RecipeWrapper} from './components/components';
 import {GlobalStyle} from "./styles";
-import {getRecipeFromApi, getRecipeFromApiJSON} from "../../helpers/helpers";
+import {getRecipes} from "../../helpers/helpers";
 
 function Recipes() {
-  const data = getRecipeFromApiJSON();
-  //const data = getRecipeFromApi();
+  const data = getRecipes();
   const renderRecipes = data.map((recipe) => (
     <RecipeWrapper recipe={recipe}/>
   ));
@@ -20,6 +19,6 @@ function Recipes() {
       </React.Fragment>
     </>
   );
-};
+}
 
 export default Recipes;
