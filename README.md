@@ -1,5 +1,6 @@
 # PDF Generator
-
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/professorik/data-to-pdf-generator)
+![GitHub last commit](https://img.shields.io/github/last-commit/professorik/data-to-pdf-generator)
 ## Features
 - Get PDF from DB
 - Send xlsx and recieve PDF
