@@ -30,11 +30,11 @@ To generate PDF from static data:
 npm run convert
 ```
 ## Troubleshoots
-If you haven't ssl sertificate add in your .env file
+If you haven't ssl certificate add in your .env file
 ```sh
 NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
-in other case set your sertificate [here][sl]
+in another case set your certificate [here][sl]
 
 ## Usage
 By default API works at localhost:5000.
