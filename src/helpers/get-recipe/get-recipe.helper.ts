@@ -1,67 +1,44 @@
 'use strict';
 import {Recipe} from "../../common/types/types";
-import recipeDB from "../../../database.json"
 import os from "os";
 const excelToJson = require('convert-excel-to-json');
-const path = require('path');
 const fs = require('fs');
-
-const getRecipe = (
-): Recipe[] | null => {
-  // @ts-ignore
-  return recipeDB;
-};
-
-const getRecipeFromXLSX = (): Recipe[] => {
-  const spreadsheet = excelToJson({
-    sourceFile: 'D:\\IdeaProjects\\data-to-pdf-generator\\test.xlsx'
-  });
-  console.log('XLSX is converted');
-  const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
-  return getRecipesList(recipesList);
-}
 
 const getRecipeFromApi = (): Recipe[] => {
   const spreadsheet = excelToJson({
-    sourceFile: os.tmpdir()+'\\xlsxFigmaRecipeFile.xlsx'
+    sourceFile: os.tmpdir()+'/xlsxFigmaRecipeFile.xlsx'
   });
-  console.log('XLSX is converted');
   const recipesList = spreadsheet.figma_recipes.filter(it => it.S !== '/hide').slice(1);
   return getRecipesList(recipesList);
 }
 
 const getRecipeFromApiJSON = (): Recipe[] => {
-  const jsonPath = path.join(__dirname, '../../../DB.json');
-  const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-  return getRecipesListFromDB(data);
+  const json = fs.readFileSync(os.tmpdir()+'/DB.json', 'utf-8');
+  return getRecipesListFromDB(JSON.parse(json));
 }
 
-//todo: just use data base data without mapping
 const getRecipesListFromDB = (list):Recipe[] => {
   return list.map(it => {
     return {
-      "id": it.recipe_id,
-      "firstName": it.firstname,
-      "lastName": it.lastname,
-      "title": it.recipe_title,
-      "imgUrl": it.recipe_image_url,
+      "recipe_id": it.recipe_id,
+      "firstname": it.firstname,
+      "lastname": it.lastname,
+      "recipe_title": it.recipe_title,
+      "recipe_image_url": it.recipe_image_url,
       "portions": it.portions,
-      "grossPrep": it.gross_prep_time,
-      "netPrepTime": it.net_prep_time,
-      "type": {
-        "id": "1",
-        "name": it.recipe_category,
-        "icon": it.recipe_category_image_url
-      },
+      "gross_prep_time": it.gross_prep_time,
+      "net_prep_time": it.net_prep_time,
+      "recipe_category": it.recipe_category,
+      "recipe_category_image_url": it.recipe_category_image_url,
       "ingredients": it.ingredients,
       "paos": it.paos,
       "instruction": it.instruction,
-      "printId": it.print_id,
-      "tip": it.health_tip,
-      "recipeFootNote": it.recipe_foot_note,
-      "nutrientsLabel": it.nutrition_title,
-      "stepsLabel": it.recipe_instruction_title,
-      "ingredientsLabel": it.recipe_ingredient_title,
+      "print_id": it.print_id,
+      "health_tip": it.health_tip,
+      "recipe_foot_note": it.recipe_foot_note,
+      "nutrition_title": it.nutrition_title,
+      "recipe_instruction_title": it.recipe_instruction_title,
+      "recipe_ingredient_title": it.recipe_ingredient_title,
       "nutrients": [
         {
           "name": it.energy_title,
@@ -107,28 +84,25 @@ const getRecipesListFromDB = (list):Recipe[] => {
 const getRecipesList = (list):Recipe[] => {
   return list.map(it => {
     return {
-      "id": it.A,
-      "firstName": it.C,
-      "lastName": it.D,
-      "title": it.E,
-      "imgUrl": it.F,
+      "recipe_id": it.A,
+      "firstname": it.C,
+      "lastname": it.D,
+      "recipe_title": it.E,
+      "recipe_image_url": it.F,
       "portions": it.G,
-      "grossPrep": it.H,
-      "netPrepTime": it.I,
-      "type": {
-        "id": "1",
-        "name": it.J,
-        "icon": it.K
-      },
+      "gross_prep_time": it.H,
+      "net_prep_time": it.I,
+      "recipe_category": it.J,
+      "recipe_category_image_url": it.K,
       "ingredients": it.L.split("\n"),
       "paos": it.M.split("\n"),
       "instruction": it.N.split("\n\n"),
-      "printId": it.R,
-      "tip": it.T,
-      "recipeFootNote": it.O,
-      "nutrientsLabel": it.AN,
-      "stepsLabel": it.Q,
-      "ingredientsLabel": it.P,
+      "print_id": it.R,
+      "health_tip": it.T,
+      "recipe_foot_note": it.O,
+      "nutrition_title": it.AN,
+      "recipe_instruction_title": it.Q,
+      "recipe_ingredient_title": it.P,
       "nutrients": [
         {
           "name": it.U,
@@ -171,4 +145,4 @@ const getRecipesList = (list):Recipe[] => {
   });
 }
 
-export { getRecipe, getRecipeFromXLSX, getRecipeFromApi, getRecipeFromApiJSON };
+export { getRecipeFromApi, getRecipeFromApiJSON };

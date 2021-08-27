@@ -1,1 +1,1 @@
-export { getRecipe,getRecipeFromXLSX, getRecipeFromApi, getRecipeFromApiJSON } from './get-recipe/get-recipe.helper';
+export { getRecipeFromApi, getRecipeFromApiJSON } from './get-recipe/get-recipe.helper';

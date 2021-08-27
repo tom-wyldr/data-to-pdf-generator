@@ -16,24 +16,24 @@ const RecipeWrapper: FC<Props> = ({recipe}) =>  {
   return (
     <Container>
       <LeftItem>
-        <h4>Hi {recipe.firstName} </h4>
+        <h4>Hi {recipe.firstname} </h4>
         <ImageContainer
-            imgUrl={recipe.imgUrl}
+            imgUrl={recipe.recipe_image_url}
             portions={recipe.portions}
-            name={recipe.type.name}
-            time={recipe.grossPrep}
-            icon={recipe.type.icon}
+            name={recipe.recipe_category}
+            time={recipe.gross_prep_time}
+            icon={recipe.recipe_category_image_url}
         />
-        <h3>{recipe.title} </h3>
-        <Tip tip={recipe.tip} />
-        <NutrientsList nutrients={recipe.nutrients} label={recipe.nutrientsLabel} />
-        <IngredientsList ingredients={recipe.ingredients} species={recipe.paos} label={recipe.ingredientsLabel} />
+        <h3>{recipe.recipe_title} </h3>
+        <Tip tip={recipe.health_tip} />
+        <NutrientsList nutrients={recipe.nutrients} label={recipe.nutrition_title} />
+        <IngredientsList ingredients={recipe.ingredients} species={recipe.paos} label={recipe.recipe_ingredient_title} />
       </LeftItem>
       <RightItem>
-        <Instruction steps={recipe.instruction} label={recipe.stepsLabel} />
+        <Instruction steps={recipe.instruction} label={recipe.recipe_instruction_title} />
       </RightItem>
-      <FooterLabel>{recipe.recipeFootNote}</FooterLabel>
-      <IdLabel>{recipe.printId}</IdLabel>
+      <FooterLabel>{recipe.recipe_foot_note}</FooterLabel>
+      <IdLabel>{recipe.print_id}</IdLabel>
     </Container>
   );
 };

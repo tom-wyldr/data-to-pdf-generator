@@ -3,7 +3,9 @@ import fse from 'fs-extra';
 import {HttpError} from "routing-controllers";
 import os from "os";
 
-export default (inputName: string, allowedFileMimeTypes: string[], maxFileSize: number) => {
+const allowedFileMimeTypes = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+
+export default (inputName: string, maxFileSize: number) => {
 	return multer({
 		fileFilter: (req, file, cb) => {
 			if (allowedFileMimeTypes.indexOf(file.mimetype) === -1) {
@@ -14,7 +16,6 @@ export default (inputName: string, allowedFileMimeTypes: string[], maxFileSize: 
 		limits: {
 			fileSize: maxFileSize,
 		},
-		// storage: multer.memoryStorage()
 		storage: multer.diskStorage({
 			destination: (req, file, cb) => {
 				const uploadFolder = os.tmpdir();
