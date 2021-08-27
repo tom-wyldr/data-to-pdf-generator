@@ -195,7 +195,7 @@ WITH base AS
                  CASE WHEN b.locale = 'en' THEN 'Protein' ELSE 'Eiweiß' END AS protein_title,
                  CASE WHEN b.locale = 'en' THEN 'Fat' ELSE 'Fett' END AS fat_title,
                  CASE WHEN b.locale = 'en' THEN 'Saturated fatty acids' ELSE 'Gesättigte Fettsäuren:' END AS satfat_title,
-                 CASE WHEN b.locale = 'en' THEN 'Polyunsaturated fatty acids' ELSE 'ungesättigte Fettsäuren:' END AS unsatfat_title,
+                 CASE WHEN b.locale = 'en' THEN 'Polyunsaturated fatty acids' ELSE 'Ungesättigte Fettsäuren:' END AS unsatfat_title,
                  CASE WHEN b.locale = 'en' THEN 'Carbs' ELSE 'Kohlenhydrate' END AS carbs_title,
                  CASE WHEN b.locale = 'en' THEN 'Fibers' ELSE 'Ballastoffe' END AS fibers_title,
                  CASE WHEN b.locale = 'en' THEN 'Sugar' ELSE 'Zucker' END AS sugar_title,
