@@ -1,6 +1,7 @@
 // @ts-ignore
 const fs = require('fs');
-const html = fs.readFileSync('D:\\IdeaProjects\\data-to-pdf-generator\\out\\index.html', 'utf8');
+const path = require('path');
+const html = fs.readFileSync(path.join(__dirname, '../out/index.html'), 'utf8');
 const puppeteer = require('puppeteer')
 
 convert();
@@ -9,7 +10,6 @@ async function convert() {
     await convertPuppeteer();
 }
 
-//20s to gen html + 20s to gen 230p
 async function convertPuppeteer() {
     const browser = await puppeteer.launch({
         headless: true
