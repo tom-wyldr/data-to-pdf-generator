@@ -35,5 +35,15 @@ NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 in other case set your sertificate [here][sl]
 
+## Usage
+By default API works at localhost:5000.
+Supported paths:
+- api/recipes 
+  - Input: none
+  - Output: pdf
+- api/generate
+  - Input: xlsx **(form-data, key=input, value=*.xlsx)** 
+  - Output: pdf
+
 
 [sl]: <https://github.com/professorik/data-to-pdf-generator/blob/e5b3128b0871b9e24c46fe77da8502c153194f12/src/server.ts#L19>
