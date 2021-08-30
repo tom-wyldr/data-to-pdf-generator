@@ -36,6 +36,9 @@ NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 in another case set your certificate [here][sl]
 
+If there is an error with loading pdf, try to
+change slashes [here][slash1] and [here][slash2]
+
 ## Usage
 By default API works at localhost:5000.
 Supported paths:
@@ -48,3 +51,5 @@ Supported paths:
 
 
 [sl]: <https://github.com/professorik/data-to-pdf-generator/blob/e5b3128b0871b9e24c46fe77da8502c153194f12/src/server.ts#L19>
+[slash1]: <https://github.com/professorik/data-to-pdf-generator/blob/f67933b906b99dfdfe24e55b88ef479513ac8994/src/api/controllers/PageController.ts#L18>
+[slash2]: <https://github.com/professorik/data-to-pdf-generator/blob/f67933b906b99dfdfe24e55b88ef479513ac8994/src/api/controllers/PageController.ts#L26>
