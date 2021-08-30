@@ -15,7 +15,7 @@ export class PageController {
     @UseBefore(fileUploadMiddleware('input', 1024 * 1024 * 4))
     async post(@Req() req: Request, @Res() res: any) {
         await this.pageService.generatePdfFromDiskXlsx();
-        const file = `${process.cwd()}\\test2.pdf`;
+        const file = `${process.cwd()}/test2.pdf`;
         await promisify<string, void>(res.sendFile.bind(res))(file)
         return res;
     }
@@ -23,7 +23,7 @@ export class PageController {
     @Get('/recipes')
     async recipes(@Res() res: any) {
         await this.pageService.getRecipesFromDB();
-        const file = `${process.cwd()}\\test2.pdf`;
+        const file = `${process.cwd()}/test2.pdf`;
         await promisify<string, void>(res.sendFile.bind(res))(file)
         return res;
     }
